@@ -2,7 +2,10 @@ package com.example;
 
 import java.util.List;
 
+import com.example.tipos.Factura;
 import com.example.tipos.Persona;
+import com.example.tipos.RepositoryPersonaImp;
+import com.example.tipos.RepositoryPersonaMock;
 
 /**
  * La clase principal
@@ -18,6 +21,7 @@ public class Principal {
 		System.out.println("Hola clase");
 		var app = new Principal();
 		app.ejemplos4();
+		System.out.println("Termino");
 	}
 
 	void ejemplos4() {
@@ -37,15 +41,22 @@ public class Principal {
 			System.out.println("Paso siempre");
 		}
 		System.out.println(d2);
-		var calc = new Calculadora();
+		ICalculadora calc = new Calculadora();
 		System.out.println(calc.suma(1, 3));
 		System.out.println(calc.avg(1, 2));
 		System.out.println(calc.avg(1,2,3));
-		var p = new Profesor();
+		var p = new Profesor(1, "Pepito", "Grillo", 2000.0);
 		Persona.reset();
 		p.otro();
 		((Profesor)p).salta();
+		p = null;
+		System.runFinalization();
+		System.out.println("Ni caso");
+		var x = Factura.Estado.PENDIENTE;
 		
+		RepositoryPersona dao = new RepositoryPersonaImp();
+		dao = new RepositoryPersonaMock();
+		dao.getAll();
 	}
 	static void ejemplos3() {
 		var i = 6;
