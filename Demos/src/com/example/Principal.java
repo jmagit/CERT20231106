@@ -1,5 +1,9 @@
 package com.example;
 
+import java.util.List;
+
+import com.example.tipos.Persona;
+
 /**
  * La clase principal
  */
@@ -12,9 +16,37 @@ public class Principal {
 	 */
 	public static void main(String[] args) {
 		System.out.println("Hola clase");
-		ejemplos3();
+		var app = new Principal();
+		app.ejemplos4();
 	}
 
+	void ejemplos4() {
+		byte diaDeLaSemana = 0;
+		DiasDeLaSemana d1 = DiasDeLaSemana.DOMINGO;
+		DiasLaborables d2 = DiasLaborables.LUNES;
+		if(d1 == DiasDeLaSemana.LUNES) {
+			
+		}
+		try {
+		d2 = DiasLaborables.getEnum((byte)5);
+			
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+			return;
+		} finally {
+			System.out.println("Paso siempre");
+		}
+		System.out.println(d2);
+		var calc = new Calculadora();
+		System.out.println(calc.suma(1, 3));
+		System.out.println(calc.avg(1, 2));
+		System.out.println(calc.avg(1,2,3));
+		var p = new Profesor();
+		Persona.reset();
+		p.otro();
+		((Profesor)p).salta();
+		
+	}
 	static void ejemplos3() {
 		var i = 6;
 		i += 4;
@@ -83,6 +115,51 @@ public class Principal {
 		System.out.println(m[1][1]);
 		m[1] = t;
 		System.out.println(m[0][2]);
+		for(int k=0, jj=0; k < tt.length; k++, jj-- ) {
+			
+		}
+		int k=0;
+		int i = 0;
+		for(int item : tt) {
+			i += item;
+		}
+		
+//		eti:
+//		while(true) {
+//			//...
+//			if(i < 0) break;
+//			// ...
+//			if(m.length > 10) break;
+//			// ...
+//			while(true) {
+//				//...
+//				break eti;
+//				// ...
+//				if(m.length > 10) break;
+//				// ...
+//				
+//			}
+//			switch (i) {
+//			case 1:
+//				i += 1;
+//			case 2, 3:
+//				i += 1;
+//				break eti;
+//
+//			default:
+//				break;
+//			}
+//		
+//		}
+//		while(i < 0) {
+//			// ...
+//			if(m.length <= 10) continue;
+//				// ...
+//				if(mm.length > 10) continue;
+//				}
+//				}
+//			}
+//		}
 
 	}
 
