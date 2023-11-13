@@ -1,15 +1,14 @@
-package com.example.tipos;
+package com.example;
 
 import java.util.List;
 
-import com.example.PersonaRepository;
+import com.example.tipos.Persona;
 
-
-public class RepositoryPersonaMock implements PersonaRepository {
+public class PersonaRepositoryImpl implements PersonaRepository {
 
 	@Override
 	public List<Persona> getAll() {
-		System.out.println("Soy el falso");
+		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -42,4 +41,5 @@ public class RepositoryPersonaMock implements PersonaRepository {
 		// TODO Auto-generated method stub
 		
 	}
+
 }

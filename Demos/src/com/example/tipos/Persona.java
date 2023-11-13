@@ -1,5 +1,7 @@
 package com.example.tipos;
 
+import java.time.LocalDate;
+
 public abstract class Persona {
 	public static final int EDAD_JUBILACION = 67;
 	public final int EDAD_LABORAL;
@@ -9,7 +11,10 @@ public abstract class Persona {
 	private int id;
 	private String nombre, apellido;
 	boolean interno = true;
-
+	LocalDate fNacimiento;
+	
+	private transient Integer edad = null;
+		
 	static {
 		contador = 0;
 	}
@@ -49,6 +54,19 @@ public abstract class Persona {
 	protected void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+	
+	
+	protected LocalDate getfNacimiento() {
+		return fNacimiento;
+	}
+	protected void setfNacimiento(LocalDate fNacimiento) {
+		this.fNacimiento = fNacimiento;
+		this.edad = LocalDate.now().getYear() - fNacimiento.getYear();
+	}
+	protected int getEdad() {
+		return edad;
+	}
+
 	protected void salta() {
 		System.out.println("Salta persona");
 	}
@@ -69,4 +87,8 @@ public abstract class Persona {
 	}
 
 	public abstract void calcula();
+	
+	public <T> T generico(T param) {
+		return param;
+	}
 }
