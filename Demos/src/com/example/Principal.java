@@ -2,6 +2,7 @@ package com.example;
 
 import java.util.List;
 
+import com.example.exceptions.CalculadoraException;
 import com.example.tipos.EjemploGenericos;
 import com.example.tipos.Factura;
 import com.example.tipos.Persona;
@@ -21,10 +22,49 @@ public class Principal {
 	public static void main(String[] args) {
 		System.out.println("Hola clase");
 		var app = new Principal();
-		app.ejemplos6();
+		app.ejemplos7();
 		System.out.println("Termino");
 	}
 
+	void ejemplos7() {
+		try {
+			calcula();
+		} catch (CalculadoraException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	void calcula() throws CalculadoraException {
+		try(var calc=new Calculadora()) {
+			calc.close();
+			System.out.println(calc.divide(1.0, 0));
+		} catch (ArithmeticException e) {
+//		System.err.println("Division por 0");
+			throw new CalculadoraException("Division por 0", e);
+		} catch (Exception e) {
+			System.err.println(e.getMessage());			
+		}
+//		var calc=new Calculadora();
+//		try {
+//			
+//			System.out.println(calc.divide(1.0, 10));
+//			System.out.println(calc.divide(1, 0));
+//		} catch(ArithmeticException e) {
+////			System.err.println("Division por 0");
+//			throw new CalculadoraException("Division por 0", e);
+//		} catch (Exception e) {
+//			System.err.println(e.getMessage());
+//		} finally {
+//			try {
+//				System.out.println(calc.divide(1.0, 0));
+//			} catch (Exception e2) {
+//				// TODO: handle exception
+//			}
+//			System.out.println("Paso siempre");
+//		}
+	}
 	void pinta(String cad) {
 		 System.out.println(cad.toUpperCase());
 	}
