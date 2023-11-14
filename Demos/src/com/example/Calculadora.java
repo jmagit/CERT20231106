@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import com.example.exceptions.CalculadoraException;
+import com.example.exceptions.PruebasException;
 
 public class Calculadora implements ICalculadora, AutoCloseable {
 	private double toDouble(double o) {
@@ -14,7 +15,7 @@ public class Calculadora implements ICalculadora, AutoCloseable {
 	
 	@Override
 	public double suma(double o1, double o2) {
-		return o1 + o2;
+		return toDouble(o1 + o2);
 	}
 	
 	public double divide(double o1, double o2) throws CalculadoraException {
@@ -29,6 +30,8 @@ public class Calculadora implements ICalculadora, AutoCloseable {
 	
 	@Override
 	public double avg(double o1, double o2, double ...resto) {
+		if(resto.length < 1)
+			throw new PruebasException();
 		double result = o1 + o2;
 		for(var d: resto) result += d;
 		return result / (resto.length + 2);

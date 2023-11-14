@@ -1,8 +1,9 @@
-package com.example.tipos;
+package com.example.repositorios;
 
 import java.util.List;
 
 import com.example.Repository;
+import com.example.tipos.Persona;
 
 public interface PersonaRepository extends Repository<Persona, Integer> {
 //	List<Persona> getAll();

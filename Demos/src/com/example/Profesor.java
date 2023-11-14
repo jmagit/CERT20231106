@@ -26,6 +26,14 @@ public class Profesor extends Persona implements Todo {
 
 	public Profesor(int id, String nombre, String apellido, double salario) {
 		this(16, id, nombre, apellido, true);
+		setSalario(salario);
+	}
+
+	public double getSalario() {
+		return salario;
+	}
+
+	public void setSalario(double salario) {
 		this.salario = salario;
 	}
 

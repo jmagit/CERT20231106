@@ -2,6 +2,7 @@ package com.example.tipos;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Optional;
 
 public abstract class Persona {
 	public static final int EDAD_JUBILACION = 67;
@@ -35,6 +36,10 @@ public abstract class Persona {
 	public Persona(int id, String nombre, String apellido, boolean interno) {
 		this(16, id, nombre, apellido, interno);
 	}
+	public Persona(int id, String nombre, String apellido, boolean interno, LocalDate fNacimiento) {
+		this(16, id, nombre, apellido, interno);
+		setfNacimiento(fNacimiento);
+	}
 
 	protected int getId() {
 		return id;
@@ -46,25 +51,45 @@ public abstract class Persona {
 		return nombre;
 	}
 	protected void setNombre(String nombre) {
-		if(nombre == null || "".equals(nombre.trim())) throw new IllegalArgumentException("Nombre invalido");
+		if(nombre == null || "".equals(nombre.trim())) 
+			throw new IllegalArgumentException("Nombre invalido");
 		this.nombre = nombre;
 	}
-	protected String getApellido() {
+	public String getApellido() {
 		return apellido;
 	}
-	protected void setApellido(String apellido) {
+	public void setApellido(String apellido) {
+		assert apellido != null : "El apellido esta a nulo";
 		this.apellido = apellido;
 	}
 	
 	
-	protected LocalDate getfNacimiento() {
-		return fNacimiento;
+	public Optional<LocalDate> getfNacimiento() {
+		if(fNacimiento == null)
+			return Optional.empty();
+		else {
+			return Optional.of(fNacimiento);
+		}
+//		return Optional.ofNullable(fNacimiento);
 	}
-	protected void setfNacimiento(LocalDate fNacimiento) {
+	public void setfNacimiento(LocalDate fNacimiento) {
+		if(fNacimiento == null)
+			throw new IllegalArgumentException("Es obligatoria la fecha");
 		this.fNacimiento = fNacimiento;
-		this.edad = (int) fNacimiento.until(LocalDate.now(), ChronoUnit.YEARS);;
+		this.edad = (int) fNacimiento.until(LocalDate.now(), ChronoUnit.YEARS);
+		assert edad >= 0 : "Error calculo de edad";
 	}
-	protected int getEdad() {
+	public void clearNacimiento() {
+		this.fNacimiento = null;
+		this.edad = -1;
+	}
+	public boolean hasEdad() {
+		return fNacimiento != null;
+	}
+
+	public int getEdad() {
+		if(fNacimiento == null)
+			throw new IllegalArgumentException("Es obligatoria la fecha");
 		return edad;
 	}
 

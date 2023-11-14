@@ -1,13 +1,14 @@
-package com.example.tipos;
+package com.example.repositorios;
 
 import java.util.List;
 
+import com.example.tipos.Persona;
 
-public class RepositoryPersonaMock implements PersonaRepository {
+public class RepositoryPersonaImp implements PersonaRepository {
 
 	@Override
 	public List<Persona> getAll() {
-		System.out.println("Soy el falso");
+		System.out.println("Soy el de verdad");
 		return null;
 	}
 

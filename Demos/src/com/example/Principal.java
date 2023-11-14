@@ -1,13 +1,15 @@
 package com.example;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import com.example.exceptions.CalculadoraException;
+import com.example.repositorios.RepositoryPersonaImp;
+import com.example.repositorios.RepositoryPersonaMock;
 import com.example.tipos.EjemploGenericos;
 import com.example.tipos.Factura;
 import com.example.tipos.Persona;
-import com.example.tipos.RepositoryPersonaImp;
-import com.example.tipos.RepositoryPersonaMock;
 
 /**
  * La clase principal
@@ -22,12 +24,32 @@ public class Principal {
 	public static void main(String[] args) {
 		System.out.println("Hola clase");
 		var app = new Principal();
-		app.ejemplos7();
+		app.cotilla();
 		System.out.println("Termino");
+	}
+
+	void cotilla() {
+		for(var m : Calculadora.class.getDeclaredMethods())
+			System.out.println(m.getName());
+		var p = new Profesor(0, "Pepito", "Grillo", 0);
+		for(var m : p.getClass().getDeclaredFields())
+			System.out.println(m.getName());
+		
 	}
 
 	void ejemplos7() {
 		try {
+			var p = new Profesor(0, "Pepito", "Grillo", 0);
+			p.setApellido("Grillo");
+			System.out.println(p.getNombre().toUpperCase());
+			p.setfNacimiento(LocalDate.of(2024,  11, 15));
+			try {
+			System.out.println(
+					p.getfNacimiento().isEmpty() ? "No hay fecha" : p.getfNacimiento().get().getYear());
+			} catch (NoSuchElementException e) {}
+			if(p.hasEdad()) System.out.println(p.getEdad());
+			p.clearNacimiento();
+			
 			calcula();
 		} catch (CalculadoraException e) {
 			// TODO Auto-generated catch block
@@ -39,6 +61,8 @@ public class Principal {
 	void calcula() throws CalculadoraException {
 		try(var calc=new Calculadora()) {
 			calc.close();
+			System.out.println(calc.suma(0.1, 0.2));
+			System.out.println(calc.suma(1, -0.9));
 			System.out.println(calc.divide(1.0, 0));
 		} catch (ArithmeticException e) {
 //		System.err.println("Division por 0");

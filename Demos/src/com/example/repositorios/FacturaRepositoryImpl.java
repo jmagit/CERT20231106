@@ -1,42 +1,45 @@
-package com.example.tipos;
+package com.example.repositorios;
 
 import java.util.List;
 
-public class RepositoryPersonaImp implements PersonaRepository {
+import com.example.tipos.Factura;
+
+public class FacturaRepositoryImpl implements FacturaRepository {
 
 	@Override
-	public List<Persona> getAll() {
-		System.out.println("Soy el de verdad");
-		return null;
-	}
-
-	@Override
-	public Persona getOne(Integer id) {
+	public List<Factura> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Persona add(Persona item) {
+	public Factura getOne(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Persona modify(Persona item) {
+	public Factura add(Factura item) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void delete(Persona item) {
+	public Factura modify(Factura item) {
 		// TODO Auto-generated method stub
-		
+		return null;
+	}
+
+	@Override
+	public void delete(Factura item) {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void deleteBy(Integer id) {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 }
