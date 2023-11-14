@@ -2,8 +2,6 @@ package com.example.tipos;
 
 import java.util.List;
 
-import com.example.FacturaRepository;
-
 public class FacturaRepositoryImpl implements FacturaRepository {
 
 	@Override

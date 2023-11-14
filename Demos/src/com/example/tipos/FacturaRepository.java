@@ -1,6 +1,6 @@
-package com.example;
+package com.example.tipos;
 
-import com.example.tipos.Factura;
+import com.example.Repository;
 
 public interface FacturaRepository extends Repository<Factura, Integer> {
 

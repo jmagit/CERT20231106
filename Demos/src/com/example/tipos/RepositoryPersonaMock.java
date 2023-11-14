@@ -2,8 +2,6 @@ package com.example.tipos;
 
 import java.util.List;
 
-import com.example.PersonaRepository;
-
 
 public class RepositoryPersonaMock implements PersonaRepository {
 

@@ -1,8 +1,6 @@
-package com.example;
+package com.example.tipos;
 
 import java.util.List;
-
-import com.example.tipos.Persona;
 
 public class PersonaRepositoryImpl implements PersonaRepository {
 
