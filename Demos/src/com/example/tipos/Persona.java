@@ -1,6 +1,7 @@
 package com.example.tipos;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public abstract class Persona {
 	public static final int EDAD_JUBILACION = 67;
@@ -61,7 +62,7 @@ public abstract class Persona {
 	}
 	protected void setfNacimiento(LocalDate fNacimiento) {
 		this.fNacimiento = fNacimiento;
-		this.edad = LocalDate.now().getYear() - fNacimiento.getYear();
+		this.edad = (int) fNacimiento.until(LocalDate.now(), ChronoUnit.YEARS);;
 	}
 	protected int getEdad() {
 		return edad;

@@ -1,6 +1,15 @@
 package com.example;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Calculadora implements ICalculadora {
+	private double toDouble(double o) {
+		return (new BigDecimal(o))
+				.setScale(16, RoundingMode.HALF_DOWN)
+				.doubleValue();
+	}
+	
 	@Override
 	public double suma(double o1, double o2) {
 		return o1 + o2;
