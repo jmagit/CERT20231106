@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 
 import com.example.exceptions.CalculadoraException;
 import com.example.exceptions.PruebasException;
+import static java.lang.Math.*;
 
 public class Calculadora implements ICalculadora, AutoCloseable {
 	private double toDouble(double o) {

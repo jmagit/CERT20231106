@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
-public abstract class Persona {
+public abstract class Persona implements Comparable<Persona> {
 	public static final int EDAD_JUBILACION = 67;
 	public final int EDAD_LABORAL;
 	
@@ -117,4 +117,9 @@ public abstract class Persona {
 	public <T> T generico(T param) {
 		return param;
 	}
+	@Override
+	public int compareTo(Persona o) {
+		return edad - o.edad;
+	}
+	
 }

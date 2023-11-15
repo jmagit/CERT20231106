@@ -5,6 +5,7 @@ import com.example.tipos.Persistente;
 import com.example.tipos.Persona;
 import com.example.tipos.Todo;
 
+@Autor(nombre = "Yo mismo")
 public class Profesor extends Persona implements Todo {
 	private double salario = 0;
 //	private Profesor() {}
@@ -14,12 +15,13 @@ public class Profesor extends Persona implements Todo {
 //	private Profesor(int i, String s) {}
 	
 	@Override
+	@Autor(nombre = "Otro")
 	public void calcula() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public Profesor(int edadLaboral, int id, String Nombre, String apellido, boolean interno) {
+	public Profesor(@Autor(nombre = "Otro") int edadLaboral, int id, String Nombre, String apellido, boolean interno) {
 		super(edadLaboral, id, Nombre, apellido, interno);
 		// TODO Auto-generated constructor stub
 	}
@@ -29,11 +31,14 @@ public class Profesor extends Persona implements Todo {
 		setSalario(salario);
 	}
 
+	@Deprecated
 	public double getSalario() {
 		return salario;
 	}
 
 	public void setSalario(double salario) {
+		if(salario < 0)
+			throw new IllegalArgumentException("No puede ser negativo");
 		this.salario = salario;
 	}
 
