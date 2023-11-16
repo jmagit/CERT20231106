@@ -41,7 +41,7 @@ public abstract class Persona implements Comparable<Persona> {
 		setfNacimiento(fNacimiento);
 	}
 
-	protected int getId() {
+	public int getId() {
 		return id;
 	}
 	protected void setId(int id) {

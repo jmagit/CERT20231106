@@ -1,4 +1,4 @@
-package com.example;
+package com.example.tipos;
 
 import java.util.Objects;
 

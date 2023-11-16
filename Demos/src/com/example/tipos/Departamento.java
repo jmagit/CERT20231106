@@ -5,8 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.example.Empleado;
-
 public class Departamento {
 	Empleado jefe = new Empleado(1, "Manda", "Mas", 6000);
 	List<Empleado> lista = new ArrayList<Empleado>();

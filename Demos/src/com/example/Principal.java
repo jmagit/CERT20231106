@@ -8,14 +8,17 @@ import java.util.NoSuchElementException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.example.ejemplos.EjemploGenericos;
 import com.example.exceptions.*;
 import com.example.repositorios.RepositoryPersonaImp;
 import com.example.repositorios.RepositoryPersonaMock;
+import com.example.tipos.Alumno;
 import com.example.tipos.Color;
 import com.example.tipos.Departamento;
-import com.example.tipos.EjemploGenericos;
+import com.example.tipos.Empleado;
 import com.example.tipos.Factura;
 import com.example.tipos.Persona;
+import com.example.tipos.Profesor;
 
 /**
  * La clase principal

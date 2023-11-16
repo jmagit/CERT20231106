@@ -1,4 +1,6 @@
-package com.example.tipos;
+package com.example.ejemplos;
+
+import com.example.tipos.Persona;
 
 public class EjemploGenericos {
 

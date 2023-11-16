@@ -1,4 +1,4 @@
-package com.example.tipos;
+package com.example;
 
 public interface Grafico {
 	void pintate();

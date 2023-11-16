@@ -1,6 +1,4 @@
-package com.example;
-
-import com.example.tipos.Persona;
+package com.example.tipos;
 
 public class Alumno extends Persona {
 	private int[] notas = new int[10];

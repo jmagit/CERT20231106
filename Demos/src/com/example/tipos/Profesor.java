@@ -1,9 +1,6 @@
-package com.example;
+package com.example.tipos;
 
-import com.example.tipos.Grafico;
-import com.example.tipos.Persistente;
-import com.example.tipos.Persona;
-import com.example.tipos.Todo;
+import com.example.Autor;
 
 @Autor(nombre = "Yo mismo")
 public class Profesor extends Persona implements Todo {

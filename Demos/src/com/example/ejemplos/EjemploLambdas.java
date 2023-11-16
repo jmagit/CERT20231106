@@ -1,4 +1,4 @@
-package com.example.tipos;
+package com.example.ejemplos;
 
 import java.util.function.BiFunction;
 import java.util.function.Predicate;
