@@ -2,9 +2,12 @@ package com.example;
 
 import java.lang.annotation.Annotation;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.logging.Level;
@@ -38,20 +41,47 @@ public class Principal {
 		// System.out.println("Hola clase");
 		LOGGER.info("Arranco la aplicacion");
 		var app = new Principal();
-		app.paralelo();
+		app.listas();
 		// System.out.println("Termino");
 		LOGGER.info("Termino la aplicacion");
 	}
 
 	void paralelo() {
-		List<Integer> listOfIntegers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-		listOfIntegers.parallelStream()
-			.map(p -> p * p)
-			.sequential()
-			.sorted()
-			.forEach(System.out::println);
+//		List<Integer> listOfIntegers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+//		listOfIntegers.parallelStream()
+//			.map(p -> p * p)
+//			.sequential()
+//			.sorted()
+//			.forEach(System.out::println);
 	}
-	
+	void mapas() {
+		Map<Integer, Persona> conj = new HashMap<>();
+		var profe = new Profesor(1, "Profe1", "p1", false, LocalDate.of(1980, 1, 1), 2000);
+		conj.put(1, profe);
+		conj.put(2,new Alumno(2, "a1", "a1", false, LocalDate.of(1999, 1, 1), List.of(1,2,3)));
+		conj.put(3,new Alumno(3, "a3", "a3", false, LocalDate.of(2009, 12, 12), List.of(5,10)));
+		conj.put(4,new Alumno(4, "a4", "a4", false, LocalDate.of(2005, 5, 4), List.of(10, 8, 5,10)));
+		conj.put(1,new Alumno(1, "a1", "a1", false, LocalDate.of(1999, 1, 1), List.of(1,2,3)));
+		conj.put(22,new Profesor(22, "Profe2", "p2", false, LocalDate.of(2000, 1, 1), 1000));
+		conj.put(33,new Alumno(33, "a33", "a1", false));
+
+		System.out.println(conj.get(1));
+	}
+	void listas() {
+		List<Persona> conj = new ArrayList<>();
+		var profe = new Profesor(1, "Profe1", "p1", false, LocalDate.of(1980, 1, 1), 2000);
+		conj.add(profe);
+		conj.add(new Profesor(22, "Profe2", "p2", false, LocalDate.of(2000, 1, 1), 1000));
+		conj.add(1, new Alumno(2, "a1", "a1", false, LocalDate.of(1999, 1, 1), List.of(1,2,3)));
+		conj.add(new Alumno(3, "a3", "a3", false, LocalDate.of(2009, 12, 12), List.of(5,10)));
+		conj.add(new Alumno(4, "a4", "a4", false, LocalDate.of(2005, 5, 4), List.of(10, 8, 5,10)));
+		conj.add(new Alumno(1, "a1", "a1", false, LocalDate.of(1999, 1, 1), List.of(1,2,3)));
+		conj.add(new Alumno(33, "a33", "a1", false));
+		System.out.println(conj.get(1));
+		conj.remove(0);
+		System.out.println(conj.get(1));
+		
+	}	
 	void colecciones() {
 		Set<Persona> conj = new HashSet<>();
 		var profe = new Profesor(1, "Profe1", "p1", false, LocalDate.of(1980, 1, 1), 2000);
