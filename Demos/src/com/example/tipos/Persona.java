@@ -2,6 +2,7 @@ package com.example.tipos;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 import java.util.Optional;
 
 public abstract class Persona implements Comparable<Persona> {
@@ -120,6 +121,19 @@ public abstract class Persona implements Comparable<Persona> {
 	@Override
 	public int compareTo(Persona o) {
 		return edad - o.edad;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Persona))
+			return false;
+		Persona other = (Persona) obj;
+		return id == other.id;
 	}
 	
 }

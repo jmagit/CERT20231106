@@ -1,5 +1,7 @@
 package com.example.tipos;
 
+import java.time.LocalDate;
+
 import com.example.Autor;
 
 @Autor(nombre = "Yo mismo")
@@ -26,6 +28,11 @@ public class Profesor extends Persona implements Todo {
 	public Profesor(int id, String nombre, String apellido, double salario) {
 		this(16, id, nombre, apellido, true);
 		setSalario(salario);
+	}
+
+	public Profesor(int id, String nombre, String apellido, boolean interno, LocalDate fNacimiento, double salario) {
+		super(id, nombre, apellido, interno, fNacimiento);
+		this.salario = salario;
 	}
 
 	@Deprecated
@@ -80,4 +87,11 @@ public class Profesor extends Persona implements Todo {
 		// TODO Auto-generated method stub
 		return super.getId();
 	}
+
+	@Override
+	public String toString() {
+		return "Profesor [salario=" + salario + ", getId()=" + getId() + ", getNombre()=" + getNombre()
+				+ ", getApellido()=" + getApellido() + ", getfNacimiento()=" + getfNacimiento() + "]";
+	}
+	
 }

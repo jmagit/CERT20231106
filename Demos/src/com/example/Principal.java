@@ -3,8 +3,10 @@ package com.example;
 import java.lang.annotation.Annotation;
 import java.time.LocalDate;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,10 +38,116 @@ public class Principal {
 		// System.out.println("Hola clase");
 		LOGGER.info("Arranco la aplicacion");
 		var app = new Principal();
-		app.ejemplos8();
+		app.paralelo();
 		// System.out.println("Termino");
 		LOGGER.info("Termino la aplicacion");
 	}
+
+	void paralelo() {
+		List<Integer> listOfIntegers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+		listOfIntegers.parallelStream()
+			.map(p -> p * p)
+			.sequential()
+			.sorted()
+			.forEach(System.out::println);
+	}
+	
+	void colecciones() {
+		Set<Persona> conj = new HashSet<>();
+		var profe = new Profesor(1, "Profe1", "p1", false, LocalDate.of(1980, 1, 1), 2000);
+		conj.add(profe);
+		conj.add(new Alumno(2, "a1", "a1", false, LocalDate.of(1999, 1, 1), List.of(1,2,3)));
+		conj.add(new Alumno(3, "a3", "a3", false, LocalDate.of(2009, 12, 12), List.of(5,10)));
+		conj.add(new Alumno(4, "a4", "a4", false, LocalDate.of(2005, 5, 4), List.of(10, 8, 5,10)));
+		conj.add(new Alumno(1, "a1", "a1", false, LocalDate.of(1999, 1, 1), List.of(1,2,3)));
+		conj.add(new Profesor(22, "Profe2", "p2", false, LocalDate.of(2000, 1, 1), 1000));
+		conj.add(new Alumno(33, "a33", "a1", false));
+//		System.out.println(conj.size());
+//		for(var p: conj) {
+//			System.out.println(p);
+//		}
+//		if(conj.contains(profe))
+//			conj.remove(new Profesor(1, "xx", "", false, LocalDate.of(2000, 1, 1), 0));
+//		System.out.println(conj.size());
+//		for(var p: conj) {
+//			System.out.println(p);
+//		}
+		//var query = 
+//				.forEach(System.out::println);
+		var total = conj.stream()
+				.filter(p -> p instanceof Profesor)
+				.map(p -> (Profesor)p)
+				.mapToDouble(p -> p.getSalario())
+				.average();
+//		System.out.println(total);
+//		conj.stream()
+//			.filter(p -> p instanceof Alumno)
+//			.map(p -> (Alumno)p)
+//			.forEach(a -> System.out.println(a.toString() + " " + a.notaMedia()));
+//		System.out.println(conj.stream()
+//			.filter(p -> p instanceof Alumno)
+//			.map(p -> (Alumno)p)
+//			.flatMapToDouble(p -> p.getNotas().stream().mapToDouble(n->(double)n))
+//			.average()
+//		);
+//		conj.stream()
+//		.filter(p -> p.hasEdad())
+//		.forEach(a -> System.out.println(a.toString() + " " + a.getEdad()));
+//		conj.stream()
+//		.filter(p -> p instanceof Alumno && p.hasEdad() && p.getEdad() >= 18)
+//		//.dropWhile(p -> p instanceof Alumno && p.hasEdad() && p.getEdad() < 18)
+//		//.takeWhile(p -> p instanceof Alumno && p.hasEdad() && p.getEdad() < 18)
+//		.map(p -> (Alumno)p)
+//		.sorted((a, b) -> -(int)(a.notaMedia() - b.notaMedia()))
+//		.forEach(System.out::println);
+//		System.out.println(".................");
+//		int pag = 0, rows = 3;
+//		conj.stream()
+//			.skip(pag * rows)
+//			.limit(rows)
+//		    .sorted((a, b) -> a.getId() - b.getId())
+//			.forEach(System.out::println);
+		System.out.println(conj.stream().filter(p -> p.getId() == 33).findFirst().get());
+//		conj.stream()
+//		.filter(p -> p instanceof Alumno)
+//		.map(p -> (Alumno)p)
+//		.forEach(a -> a.addNota(10));
+		sum = 0;
+		conj.stream()
+			.filter(p -> p instanceof Alumno)
+			.map(p -> (Alumno)p)
+			.peek(a -> sum += a.notaMedia())
+			.forEach(a -> System.out.println(a.toString() + " " + a.notaMedia()));
+		System.out.println(sum);
+		sum = 0;
+		
+//		System.out.println(conj.stream()
+//			.filter(p -> p instanceof Alumno)
+//			.map(p -> ((Alumno)p).notaMedia())
+//			.anyMatch(p -> p < 5)
+//			? "Todos aprovados" : "Hay suspendidos"
+//		);
+//		System.out.println(conj.stream()
+//			.filter(p -> p instanceof Alumno)
+//			.map(p -> ((Alumno)p).notaMedia())
+//			.reduce(0.0, (acumulado, actual) -> acumulado + actual));
+
+		boolean soloMenores = false, paginado = true;
+		int pag = 0, rows = 3;
+		var query = conj.stream()
+				.filter(p -> p instanceof Alumno)
+				.map(p -> (Alumno)p);
+		if(soloMenores)
+			query = query.filter(p -> p.hasEdad() && p.getEdad() < 18);
+		if(paginado)
+			query = query
+				.skip(pag * rows)
+				.limit(rows);
+		
+		query.forEach(System.out::println);
+
+	}
+		double sum = 0.0;
 
 	void ejemplos8() {
 		var cad = "x";
